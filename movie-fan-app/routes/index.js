@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+require('dotenv').config();
+
+const apiKey = process.env.TMDB_KEY
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
