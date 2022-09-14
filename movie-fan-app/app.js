@@ -8,7 +8,17 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 const helmet = require('helmet')
-app.use(helmet())
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      "script-src": ["'self'", "maxcdn.bootstrapcdn.com", "ajax.googleapis.com"],
+      "img-src": ["'self'", "image.tmdb.org"]
+    }
+  },
+  // crossOriginEmbedderPolicy: false
+}))
+
+// app.use(helmet())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
