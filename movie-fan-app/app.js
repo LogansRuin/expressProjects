@@ -14,8 +14,7 @@ app.use(helmet({
       "script-src": ["'self'", "maxcdn.bootstrapcdn.com", "ajax.googleapis.com"],
       "img-src": ["'self'", "image.tmdb.org"]
     }
-  },
-  // crossOriginEmbedderPolicy: false
+  }
 }))
 
 // app.use(helmet())
