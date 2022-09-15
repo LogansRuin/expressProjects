@@ -18,7 +18,6 @@ router.use((req, res, next) => {
 router.get('/', function(req, res, next) {
   request.get(nowPlayingUrl, (error, response, movieData) => {
     const parsedData = JSON.parse(movieData)
-    // res.json(parsedData)
     res.render('index', { parsedData: parsedData.results })
   })
 });
