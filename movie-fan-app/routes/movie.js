@@ -5,7 +5,12 @@ require('dotenv').config();
 
 const apiKey = process.env.TMDB_KEY
 const apiBaseUrl = 'http://api.themoviedb.org/3';
-const imageBaseUrl = 'http://image.tmdb.org/t/p/w300';
+const backdropBaseUrl = 'http://image.tmdb.org/t/p/w1280';
+
+router.use((req, res, next) => { 
+  res.locals.backdropBaseUrl = backdropBaseUrl
+  next()
+})
 
 router.get('/:movieId', (req, res, next) => {
   const movieID = req.params.movieId
@@ -13,7 +18,7 @@ router.get('/:movieId', (req, res, next) => {
 
   request.get(movieUrl, (error, response, movieData) => {
     const parsedData = JSON.parse(movieData)
-    res.json(parsedData)
+    res.render('single-movie', {movie: parsedData})
   })
 })
 

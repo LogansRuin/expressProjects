@@ -1,5 +1,4 @@
 body {
-  padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -39,4 +38,11 @@ a {
   font-family: 'Swanky and Moo Moo', cursive;
   font-size: 24px;
   font-weight: normal;
+}
+
+.backdrop img{
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }

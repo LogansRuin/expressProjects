@@ -2,22 +2,24 @@
 </head>
 <body>
 	<%- include('navbar') %>
+
+	<div class="container-fluid backdrop">
+		<img src="<%= backdropBaseUrl + movie.backdrop_path %> " crossorigin/>
+	</div>
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<h1 class="single-movie-title">
-
+					<%= movie.title %> 
 				</h1>
 				
 				<h3 class="single-movie-title">
-
+					<%= movie.tagline%>
 				</h3>
-				
-
-				<img src="" />
-				
+								
 				<p class="overview-header">Movie Synopsis: <span class="single-movie-overview">
-					
+					<%= movie.overview %>
 				</span></p>
 			</div>
 		</div>
