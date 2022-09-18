@@ -14,12 +14,13 @@ router.use((req, res, next) => {
   next()
 })
 
-router.post('/search', (req, res, next) => {
-  const search = req.body
-  const searchUrl = `${apiBaseUrl}/search/${search.cat}?api_key=${apiKey}&language=en-US&query=${encodeURI(search.movieSearch)}&page=1&include_adult=false`
+router.get('/search', (req, res, next) => {
+  const searchQuery = req.query.q
+  const searchCategory = req.query.cat
+  const searchUrl = `${apiBaseUrl}/search/${searchCategory}?api_key=${apiKey}&language=en-US&query=${encodeURI(searchQuery)}&page=1&include_adult=false`
   request.get(searchUrl, (error, response, searchData) => {
     const result = JSON.parse(searchData)
-    res.json(result)
+    res.render('search', {results: result.results, searchQuery: searchQuery, searchCategory: searchCategory})
   })
 })
 
