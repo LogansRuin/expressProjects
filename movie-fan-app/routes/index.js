@@ -16,7 +16,7 @@ router.use((req, res, next) => {
 
 router.post('/search', (req, res, next) => {
   const search = req.body
-  const searchUrl = `${apiBaseUrl}/search/${search.cat}?api_key=${apiKey}&language=en-US&query=${search.movieSearch}&page=1&include_adult=false`
+  const searchUrl = `${apiBaseUrl}/search/${search.cat}?api_key=${apiKey}&language=en-US&query=${encodeURI(search.movieSearch)}&page=1&include_adult=false`
   request.get(searchUrl, (error, response, searchData) => {
     const result = JSON.parse(searchData)
     res.json(result)
