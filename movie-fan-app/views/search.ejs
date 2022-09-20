@@ -9,14 +9,22 @@
 				<h1>Search Results for: <%= searchQuery %> </h1>
 			</div>
 			<div class="col-sm-12">
-				<% results.forEach(result => { %>
-					<a href="/movie/<%= result.id %>">
-						<div class="col-md-3 col-sm-4 poster">
-						<img src="<%= imageBaseUrl + result.poster_path %>" crossorigin/>
-					</div>
-					</a>
-				<% }) %>
-				
+        <% results.forEach(result => { %>
+          <% if (searchCategory === 'movie') { %>
+            <a href="/movie/<%= result.id %>">
+              <div class="col-md-3 col-sm-4 poster">
+                <img src="<%= imageBaseUrl + result.poster_path %>" crossorigin/>
+              </div>
+            </a>
+          <% } else if ( searchCategory === 'person' ) { %>
+            <div class="col-md-3 col-sm-4 thumbnail">
+              <img src="<%= imageBaseUrl + result.profile_path %>" crossorigin/>
+              <div class="caption">
+                <h3><%= result.name %></h3>
+              </div>
+            </div>
+          <% } %> 
+        <% }) %>
 			</div>
 		</div>
 	</div>
