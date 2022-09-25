@@ -1,18 +1,26 @@
 const express = require('express')
 const router = express.Router()
-const movies = require('../data/movies')
+const moviesData = require('../data/movies')
 
 /* GET now playing movies */
 router.get('/now_playing', (req, res, next) => {
+  const movies = moviesData.slice(0,20)
   res.json({
-    movie: 'now playing'
+    page: "1",
+    results: movies,
+    dates: {
+      maximum: "",
+      minimum: ""
+    },
+    total_pages: Math.ceil( moviesData.length / 20),
+    total_results: moviesData.length
   })
 })
 
 /* GET movie */
 router.get('/:movie_id', (req, res, next) => {
   const movieId = req.params.movie_id;
-  const movie = movies.find( movie => movie.id === parseInt(movieId) )
+  const movie = moviesData.find( movie => movie.id === parseInt(movieId) )
   if (movie === undefined) {
     res.json({
       "success": false,
