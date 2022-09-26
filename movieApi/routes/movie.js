@@ -4,14 +4,13 @@ const moviesData = require('../data/movies')
 
 /* GET now playing movies */
 router.get('/now_playing', (req, res, next) => {
-  const movies = moviesData.slice(0,20)
+  const page = req.query.page === undefined ? 1 : req.query.page
+  const pageLength = 20
+  const startPostion = (page - 1) * pageLength 
+  const results = moviesData.slice(startPostion, startPostion + pageLength)
   res.json({
-    page: "1",
-    results: movies,
-    dates: {
-      maximum: "",
-      minimum: ""
-    },
+    page,
+    results,
     total_pages: Math.ceil( moviesData.length / 20),
     total_results: moviesData.length
   })
