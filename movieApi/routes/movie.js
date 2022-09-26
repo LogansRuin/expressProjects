@@ -31,4 +31,15 @@ router.get('/:movie_id', (req, res, next) => {
   }
 })
 
+/* POST movie rating */
+
+router.post('/:movie_id/rating', ( req, res, next ) => {
+  res.params
+})
+
+/* DELETE movie rating 8 */
+router.delete('/:movie_id/rating', ( req, res, next ) => {
+  
+})
+
 module.exports = router;
